@@ -1,29 +1,27 @@
-// UC6
-public static void checkPalindromeUsingQueueAndStack() {
-    String input = "civic";
+// UC7
+public static void checkPalindromeUsingDeque() {
+    String input = "refer";
 
-    java.util.Queue<Character> queue = new java.util.LinkedList<>();
-    java.util.Stack<Character> stack = new java.util.Stack<>();
+    java.util.Deque<Character> deque = new java.util.ArrayDeque<>();
 
-    // Add characters to both queue and stack
+    // Add characters to deque
     for (char c : input.toCharArray()) {
-        queue.add(c);   // FIFO
-        stack.push(c);  // LIFO
+        deque.add(c);
     }
 
     boolean isPalindrome = true;
 
-    // Compare dequeue vs pop
-    while (!queue.isEmpty()) {
-        if (queue.remove() != stack.pop()) {
+    // Compare front and rear
+    while (deque.size() > 1) {
+        if (deque.removeFirst() != deque.removeLast()) {
             isPalindrome = false;
             break;
         }
     }
 
     if (isPalindrome) {
-        System.out.println("UC6 Result: \"" + input + "\" is a Palindrome.");
+        System.out.println("UC7 Result: \"" + input + "\" is a Palindrome.");
     } else {
-        System.out.println("UC6 Result: \"" + input + "\" is NOT a Palindrome.");
+        System.out.println("UC7 Result: \"" + input + "\" is NOT a Palindrome.");
     }
 }
