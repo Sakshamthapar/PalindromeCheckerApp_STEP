@@ -2,16 +2,27 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // ===== UC1: Welcome Message =====
+        // ===== UC1 =====
+        showWelcomeMessage();
+
+        // ===== UC2 =====
+        checkHardcodedPalindrome();
+
+        // ===== UC3 =====
+        checkPalindromeUsingReverse();
+    }
+
+    // UC1
+    public static void showWelcomeMessage() {
         System.out.println("========================================");
         System.out.println(" Welcome to the Palindrome Checker App ");
         System.out.println("========================================");
-
         System.out.println("Version: 1.0");
         System.out.println("System initialized successfully.\n");
+    }
 
-
-        // ===== UC2: Hardcoded Palindrome Check =====
+    // UC2
+    public static void checkHardcodedPalindrome() {
         String input = "madam";
         boolean isPalindrome = true;
 
@@ -23,9 +34,27 @@ public class PalindromeCheckerApp {
         }
 
         if (isPalindrome) {
-            System.out.println("The string \"" + input + "\" is a Palindrome.");
+            System.out.println("UC2 Result: \"" + input + "\" is a Palindrome.");
         } else {
-            System.out.println("The string \"" + input + "\" is NOT a Palindrome.");
+            System.out.println("UC2 Result: \"" + input + "\" is NOT a Palindrome.");
+        }
+    }
+
+    // UC3
+    public static void checkPalindromeUsingReverse() {
+        String input = "madam";
+        String reversed = "";
+
+        // reverse string
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed += input.charAt(i);
+        }
+
+        // compare
+        if (input.equals(reversed)) {
+            System.out.println("UC3 Result: \"" + input + "\" is a Palindrome.");
+        } else {
+            System.out.println("UC3 Result: \"" + input + "\" is NOT a Palindrome.");
         }
     }
 }
