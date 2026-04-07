@@ -1,61 +1,29 @@
-// Strategy Interface
-interface PalindromeStrategy {
-    boolean check(String input);
-}
-// Stack Strategy
-class StackStrategy implements PalindromeStrategy {
-
-    public boolean check(String input) {
-        java.util.Stack<Character> stack = new java.util.Stack<>();
-
-        for (char c : input.toCharArray()) {
-            stack.push(c);
-        }
-
-        for (char c : input.toCharArray()) {
-            if (c != stack.pop()) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-}
-// Deque Strategy
-class DequeStrategy implements PalindromeStrategy {
-
-    public boolean check(String input) {
-        java.util.Deque<Character> deque = new java.util.ArrayDeque<>();
-
-        for (char c : input.toCharArray()) {
-            deque.add(c);
-        }
-
-        while (deque.size() > 1) {
-            if (deque.removeFirst() != deque.removeLast()) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-}
-// UC12
-public static void checkPalindromeUsingStrategy() {
+// UC13
+public static void comparePerformance() {
     String input = "level";
 
-    // Choose strategy dynamically
-    PalindromeStrategy strategy;
+    // Using simple two-pointer logic
+    long startTime = System.nanoTime();
 
-    // You can change strategy here
-    strategy = new StackStrategy();
-    // strategy = new DequeStrategy();
+    boolean isPalindrome = true;
+    int start = 0;
+    int end = input.length() - 1;
 
-    boolean result = strategy.check(input);
-
-    if (result) {
-        System.out.println("UC12 Result: \"" + input + "\" is a Palindrome.");
-    } else {
-        System.out.println("UC12 Result: \"" + input + "\" is NOT a Palindrome.");
+    while (start < end) {
+        if (input.charAt(start) != input.charAt(end)) {
+            isPalindrome = false;
+            break;
+        }
+        start++;
+        end--;
     }
+
+    long endTime = System.nanoTime();
+
+    long duration = endTime - startTime;
+
+    System.out.println("UC13 Result: \"" + input + "\" is " +
+            (isPalindrome ? "a Palindrome." : "NOT a Palindrome."));
+
+    System.out.println("Execution Time: " + duration + " ns");
 }
