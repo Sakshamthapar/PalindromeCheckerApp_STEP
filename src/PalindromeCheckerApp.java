@@ -1,23 +1,20 @@
-// UC10
-public static void checkPalindromeNormalized() {
-    String input = "A man a plan a canal Panama";
+// UC11 - Service Class
+class PalindromeService {
 
-    // Step 1: Normalize (remove spaces & symbols, lowercase)
-    String normalized = input.replaceAll("[^a-zA-Z]", "").toLowerCase();
+    // Method to check palindrome
+    public boolean checkPalindrome(String input) {
 
-    boolean isPalindrome = true;
+        int start = 0;
+        int end = input.length() - 1;
 
-    // Step 2: Check palindrome
-    for (int i = 0; i < normalized.length() / 2; i++) {
-        if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-            isPalindrome = false;
-            break;
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
         }
-    }
 
-    if (isPalindrome) {
-        System.out.println("UC10 Result: \"" + input + "\" is a Palindrome.");
-    } else {
-        System.out.println("UC10 Result: \"" + input + "\" is NOT a Palindrome.");
+        return true;
     }
 }
