@@ -1,27 +1,28 @@
-// UC7
-public static void checkPalindromeUsingDeque() {
-    String input = "refer";
+// UC8
+public static void checkPalindromeUsingLinkedList() {
+    String input = "level";
 
-    java.util.Deque<Character> deque = new java.util.ArrayDeque<>();
+    // Create LinkedList
+    java.util.LinkedList<Character> list = new java.util.LinkedList<>();
 
-    // Add characters to deque
+    // Add characters
     for (char c : input.toCharArray()) {
-        deque.add(c);
+        list.add(c);
     }
 
     boolean isPalindrome = true;
 
-    // Compare front and rear
-    while (deque.size() > 1) {
-        if (deque.removeFirst() != deque.removeLast()) {
+    // Compare first and last
+    while (list.size() > 1) {
+        if (list.removeFirst() != list.removeLast()) {
             isPalindrome = false;
             break;
         }
     }
 
     if (isPalindrome) {
-        System.out.println("UC7 Result: \"" + input + "\" is a Palindrome.");
+        System.out.println("UC8 Result: \"" + input + "\" is a Palindrome.");
     } else {
-        System.out.println("UC7 Result: \"" + input + "\" is NOT a Palindrome.");
+        System.out.println("UC8 Result: \"" + input + "\" is NOT a Palindrome.");
     }
 }
