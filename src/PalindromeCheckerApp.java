@@ -58,3 +58,29 @@ public class PalindromeCheckerApp {
         }
     }
 }
+// UC4
+public static void checkPalindromeUsingCharArray() {
+    String input = "radar";
+
+    char[] chars = input.toCharArray();
+
+    int start = 0;
+    int end = chars.length - 1;
+
+    boolean isPalindrome = true;
+
+    while (start < end) {
+        if (chars[start] != chars[end]) {
+            isPalindrome = false;
+            break;
+        }
+        start++;
+        end--;
+    }
+
+    if (isPalindrome) {
+        System.out.println("UC4 Result: \"" + input + "\" is a Palindrome.");
+    } else {
+        System.out.println("UC4 Result: \"" + input + "\" is NOT a Palindrome.");
+    }
+}
